@@ -11,6 +11,7 @@
 		FD8DA06B26305427000A529A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8DA06A26305427000A529A /* ContentView.swift */; };
 		FD8DA06D26305428000A529A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD8DA06C26305428000A529A /* Assets.xcassets */; };
 		FD8DA07026305428000A529A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD8DA06F26305428000A529A /* Preview Assets.xcassets */; };
+		FD8DA07926305475000A529A /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8DA07826305475000A529A /* WebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		FD8DA06C26305428000A529A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD8DA06F26305428000A529A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FD8DA07126305428000A529A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD8DA07826305475000A529A /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				FD8DA06826305427000A529A /* WebView_With_ProgressBarApp.swift */,
 				FD8DA06A26305427000A529A /* ContentView.swift */,
+				FD8DA07826305475000A529A /* WebView.swift */,
 				FD8DA06C26305428000A529A /* Assets.xcassets */,
 				FD8DA07126305428000A529A /* Info.plist */,
 				FD8DA06E26305428000A529A /* Preview Content */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD8DA07926305475000A529A /* WebView.swift in Sources */,
 				FD8DA06B26305427000A529A /* ContentView.swift in Sources */,
 				FD8DA06926305427000A529A /* WebView_With_ProgressBarApp.swift in Sources */,
 			);
