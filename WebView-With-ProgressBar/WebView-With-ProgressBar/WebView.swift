@@ -15,45 +15,11 @@ struct WebView: UIViewRepresentable {
     
     let urlString: String
     
-    class Coordinator: NSObject, WKUIDelegate, WKNavigationDelegate {
+    class Coordinator: NSObject {
         var parent: WebView
         
         init(_ parent: WebView) {
             self.parent = parent
-        }
-        
-        // "target="_blank""が設定されたリンクも開けるようにする
-        func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-            if navigationAction.targetFrame == nil {
-                webView.load(navigationAction.request)
-            }
-            return nil
-        }
-        
-        // ページ読み始めで呼ばれる
-        func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        }
-        
-        // ページ読み終わりで呼ばれる
-        func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        }
-        
-        // URLごとに処理を制御する
-        func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
-            if let url = navigationAction.request.url?.absoluteString {
-                if (url.hasPrefix("https://apps.apple.com/")) {
-                    guard let appStoreLink = URL(string: url) else {
-                        return
-                    }
-                    UIApplication.shared.open(appStoreLink, options: [:], completionHandler: { (succes) in
-                    })
-                    decisionHandler(WKNavigationActionPolicy.cancel)
-                } else if (url.hasPrefix("http")) {
-                    decisionHandler(WKNavigationActionPolicy.allow)
-                } else {
-                    decisionHandler(WKNavigationActionPolicy.cancel)
-                }
-            }
         }
         
         // WebViewの読み込み状況を監視する
@@ -95,13 +61,6 @@ struct WebView: UIViewRepresentable {
     }
     
     func updateUIView(_ webView: WKWebView, context: Context) {
-        // makeCoordinatorで生成したCoordinatorクラスのインスタンスを指定
-        webView.uiDelegate = context.coordinator
-        webView.navigationDelegate = context.coordinator
-        
-        // スワイプで画面遷移できるようにする
-        webView.allowsBackForwardNavigationGestures = true
-        
         context.coordinator.addProgressObserver()
         
         guard let url = URL(string: urlString) else {
@@ -109,20 +68,5 @@ struct WebView: UIViewRepresentable {
         }
         let request = URLRequest(url: url)
         webView.load(request)
-    }
-    
-    // 前のページに戻る
-    func goBack() {
-        webView.goBack()
-    }
-    
-    // 次のページに進む
-    func goForward() {
-        webView.goForward()
-    }
-    
-    // ページをリロードする
-    func reload() {
-        webView.reload()
     }
 }
